@@ -14,7 +14,9 @@ This is a WordPress theme following the tutorial by Brad in Udemy.
   - ```License URI:``` is the URI of the license.
   - ```Text Domain:``` is the text domain of the theme.
   - ```Tags:``` is the tags of the theme.
+
 - Create ```index.php``` that is the main page of the theme.
+
 - Added ```screenshot.jpg``` file to the root of the theme folder. This file is used to display the theme in the WordPress admin dashboard.
 
 ## Section 4, Lesson 11:
@@ -24,5 +26,50 @@ This is a WordPress theme following the tutorial by Brad in Udemy.
   - ```the_title();``` is used to display the title of the post.
   - ```the_content();``` is used to display the content of the post.
   - ```the_permalink();``` is used to display the permalink of the post.
+
 - Create ```single.php``` that is the single post page template of the theme.
+
 - Create ```page.php``` that is the page template of the theme.
+
+## Add Tailwind CSS to the Theme
+- Initialize npm project ```npm init -y```.
+
+- Install Tailwind CSS using npm ```npm install -D tailwindcss@3```.
+
+- Initialize Tailwind CSS ```npx tailwindcss init```.
+
+- Create ```src/input.css``` file and add the following code:
+
+    ```css 
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ``` 
+
+- Create ```functions.php``` file and add the following code:
+
+    ```php
+    function brad_enqueue_tailwind() {
+      wp_enqueue_style('tailwind-css', get_template_directory_uri() . '/css/tailwind.css');
+    }
+
+    add_action('wp_enqueue_scripts', 'brad_enqueue_tailwind');
+    ```
+  - This code will enqueue the Tailwind CSS file to the theme.
+
+- Add a script to the ```package.json``` file to watch for changes in the ```input.css``` file and compile it to the ```tailwind.css``` file.
+  ```json
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./css/tailwind.css --watch"
+  }
+  ```
+
+- Run Tailwind CSS ```npm run tailwind```.
+  
+  <h1><i> 
+    <u><b>NOTE:</b></u> In order for Tailwind CSS to work, Dont forget to add:
+  </i></h1>
+
+  ```php
+  get_header();
+  ```
