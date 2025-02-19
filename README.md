@@ -73,3 +73,18 @@ This is a WordPress theme following the tutorial by Brad in Udemy.
   ```php
   get_header();
   ```
+## Section 4, Lesson 12:
+
+- Create ```header.php``` file.
+  - The file should start the html boilerplate.
+  - Add ```<?php wp_head(); ?>``` to the head of the page.
+  - ```wp_head();``` is used to add styles to the head of the page.
+
+- Create ```footer.php``` file.
+  - The file should end the html boilerplate.
+  - Add ```<?php wp_footer(); ?>``` to the end of the body.
+  - ```wp_footer();``` is used to add scripts to the footer of the page.
+
+- Add ```get_header();``` and ```get_footer();``` to every template file.
+  - ```get_header();``` will add the header to the page.
+  - ```get_footer();``` will add the footer to the page.
